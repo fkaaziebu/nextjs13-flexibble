@@ -3,7 +3,7 @@ type Props = {
   title: string;
   state: string;
   placeholder: string;
-  isTextAera?: boolean;
+  isTextArea?: boolean;
   setState: (value: string) => void;
 };
 
@@ -12,13 +12,13 @@ const FormField = ({
   title,
   state,
   placeholder,
-  isTextAera,
+  isTextArea,
   setState,
 }: Props) => {
   return (
     <div className="flexStart flex-col w-full gap-4">
       <label className="w-full text-gray-100">{title}</label>
-      {isTextAera ? (
+      {isTextArea ? (
       <textarea
         placeholder={placeholder}
         value={state}
