@@ -34,6 +34,7 @@ const Project = g
     rules.private().create().delete().update();
   });
 
+// @ts-ignore
 const jwt = auth.JWT({
   issuer: "grafbase",
   secret: g.env("NEXTAUTH_SECRET"),
