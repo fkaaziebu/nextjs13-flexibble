@@ -1,6 +1,12 @@
 "use client";
 
-import { useCallback, useRef, ReactNode } from "react";
+import {
+  useCallback,
+  useRef,
+  ReactNode,
+  useEffect,
+  MouseEventHandler,
+} from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
@@ -13,14 +19,26 @@ const Modal = ({ children }: { children: ReactNode }) => {
     router.push("/");
   }, [router]);
 
-  const handleClick = useCallback(
-    (e: React.MouseEvent) => {
+  const handleClick: MouseEventHandler = useCallback(
+    (e) => {
       if (e.target === overlay.current && onDismiss) {
         onDismiss();
       }
     },
     [onDismiss, overlay]
   );
+
+  const onKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === "Escape") onDismiss();
+    },
+    [onDismiss]
+  );
+
+  useEffect(() => {
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [onKeyDown]);
 
   return (
     <div ref={overlay} className="modal" onClick={handleClick}>
