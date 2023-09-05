@@ -44,6 +44,7 @@ const ProjectForm = ({ type, session, project }: Props) => {
       setIsSubmitting(false);
     }
   };
+
   const handleChangeImage = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
 
@@ -146,7 +147,7 @@ const ProjectForm = ({ type, session, project }: Props) => {
         <Button
           title={
             isSubmitting
-              ? `${type === "create" ? "Ceating" : "Editing"}`
+              ? `${type === "create" ? "Creating" : "Editing"}`
               : `${type === "create" ? "Create" : "Edit"}`
           }
           type="submit"
