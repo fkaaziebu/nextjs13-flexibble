@@ -40,6 +40,7 @@ const jwt = auth.JWT({
   secret: g.env("NEXTAUTH_SECRET"),
 });
 
+// @ts-ignore
 export default config({
   schema: g,
   auth: {
